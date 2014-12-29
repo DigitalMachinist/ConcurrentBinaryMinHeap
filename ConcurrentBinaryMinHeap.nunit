@@ -1,0 +1,8 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="ConcurrentBinaryMinHeapTest\bin\Debug\ConcurrentBinaryMinHeapTest.dll" />
+    <assembly path="ConcurrentBinaryMinHeapTest\bin\Release\ConcurrentBinaryMinHeapTest.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto" />
+</NUnitProject>
