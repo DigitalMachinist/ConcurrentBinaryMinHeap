@@ -7,12 +7,12 @@
 
 var indexSectionsWithContent =
 {
-  0: "acgiprt",
-  1: "c",
+  0: "acgiprtv",
+  1: "cp",
   2: "a",
-  3: "act",
+  3: "acpt",
   4: "acgpr",
-  5: "ci"
+  5: "cipv"
 };
 
 var indexSectionNames =

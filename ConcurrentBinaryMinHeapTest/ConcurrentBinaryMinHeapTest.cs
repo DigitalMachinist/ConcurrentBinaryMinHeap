@@ -118,13 +118,11 @@ namespace Axon.Collections
             // Create a new heap.
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
-            // Try to Dequeue() and expect an InvalidOperationException to be thrown.
-			Assert.Throws<InvalidOperationException>( () => {
-				heap.Pop();
-			} );
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
 
-            // Call Add() to insert a new element to the queue as a KeyValuePair.
-            heap.Add( new KeyValuePair<float, int>( 1f, 2 ) );
+            // Call Add() to insert a new element to the queue as a PriorityValuePair.
+            heap.Add( new PriorityValuePair<int>( 1f, 2 ) );
 
             // Expect a value of 2 on the first item to be removed after adding it.
             Assert.That( heap.PopValue(), Is.EqualTo( 2 ) );
@@ -160,7 +158,7 @@ namespace Axon.Collections
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
             // Create and store a new element.
-            KeyValuePair<float, int> elem = new KeyValuePair<float, int>( 1f, 2 );
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
 
             // Ensure the queue contains the element.
             Assert.That( heap.Contains( elem ), Is.False );
@@ -180,11 +178,12 @@ namespace Axon.Collections
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
             // Create a new array of size 5.
-            KeyValuePair<float, int>[] arrayCopy = new KeyValuePair<float, int>[ 5 ];
+            PriorityValuePair<int>[] arrayCopy = new PriorityValuePair<int>[ 5 ];
 
             // Push 3 elements onto the queue.
+			PriorityValuePair<int> elem = new PriorityValuePair<int>( 3f, 6 );
             heap.Push( 1f, 2 );
-            heap.Push( 3f, 6 );
+            heap.Push( elem );
             heap.Push( 2f, 4 );
 
             // Copy the heap data to the array, starting from index 1 (not 0).
@@ -193,12 +192,12 @@ namespace Axon.Collections
             // Expect the first array index to be unset, but all the rest to be set.
 			// Note: The order of elements after the first can't be guaranteed, because the heap 
 			// doesn't store things in an exact linear order, but we can be sure that the elements 
-			// aren't going to be equal to a default KeyValuePair because we set them.
-            Assert.That( arrayCopy[ 0 ], Is.EqualTo( default( KeyValuePair<float, int> ) ) );
-            Assert.That( arrayCopy[ 1 ], Is.EqualTo( new KeyValuePair<float, int>( 3f, 6 ) ) );
-            Assert.That( arrayCopy[ 2 ], Is.Not.EqualTo( default( KeyValuePair<float, int> ) ) );
-            Assert.That( arrayCopy[ 3 ], Is.Not.EqualTo( default( KeyValuePair<float, int> ) ) );
-            Assert.That( arrayCopy[ 4 ], Is.EqualTo( default( KeyValuePair<float, int> ) ) );
+			// aren't going to be equal to null because we set them.
+            Assert.That( arrayCopy[ 0 ], Is.EqualTo( null ) );
+            Assert.That( arrayCopy[ 1 ], Is.EqualTo( elem ) );
+            Assert.That( arrayCopy[ 2 ], Is.Not.EqualTo( null ) );
+            Assert.That( arrayCopy[ 3 ], Is.Not.EqualTo( null ) );
+            Assert.That( arrayCopy[ 4 ], Is.EqualTo( null ) );
         }
 
 
@@ -214,7 +213,7 @@ namespace Axon.Collections
             heap.Push( 2f, 4 );
 
             // Use the enumerator of heap (using disposes it when we're finished).
-            using ( IEnumerator< KeyValuePair<float, int> > enumerator = heap.GetEnumerator() )
+            using ( IEnumerator< PriorityValuePair<int> > enumerator = heap.GetEnumerator() )
             {
                 // Expect the first element to have the highest priority, and expect MoveNext() to 
 				// return true until the last element. After the end of the heap is reached, it 
@@ -237,28 +236,98 @@ namespace Axon.Collections
             // Create a new heap.
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
-            // Try to Peek() and expect an InvalidOperationException to be thrown.
-			Assert.Throws<InvalidOperationException>( () => {
-				heap.Peek();
-			} );
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Expect Peek() to return null for an empty heap.
+			Assert.That( heap.Peek(), Is.EqualTo( null ) );
 
             // Ensure that the heap is empty.
             Assert.That( heap.Count, Is.EqualTo( 0 ) );
 
             // Store an element and insert it into the heap.
-            KeyValuePair<float, int> elem1 = new KeyValuePair<float, int>( 1f, 2 );
+            PriorityValuePair<int> elem1 = new PriorityValuePair<int>( 1f, 2 );
             heap.Push( elem1 );
 
             // Ensure that the element was inserted into the heap as the root element.
             Assert.That( heap.Count, Is.EqualTo( 1 ) );
             Assert.That( heap.Peek(), Is.EqualTo( elem1 ) );
 
+            // Ensure that the element was not removed from the heap.
+            Assert.That( heap.Count, Is.EqualTo( 1 ) );
+
             // Insert another element with higher priority than the last.
-            KeyValuePair<float, int> elem2 = new KeyValuePair<float, int>( 2f, 4 );
+            PriorityValuePair<int> elem2 = new PriorityValuePair<int>( 2f, 4 );
             heap.Push( elem2 );
 
             // Ensure that Peak() returns the new root element.
             Assert.That( heap.Peek(), Is.EqualTo( elem2 ) );
+        }
+
+
+        [Test]
+        public void PeekPriority()
+        {
+            // Create a new heap.
+            ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Try to PeekPriority() and expect an NullReferenceException to be thrown.
+			Assert.Throws<NullReferenceException>( () => {
+				heap.PeekPriority();
+			} );
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Store an element and insert it into the heap.
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
+            heap.Push( elem );
+
+            // Ensure that the element was inserted into the heap.
+            Assert.That( heap.Count, Is.EqualTo( 1 ) );
+            Assert.That( heap.Peek(), Is.EqualTo( elem ) );
+
+            // Ensure that the priority of the pushed element is returned.
+            Assert.That( heap.PeekPriority(), Is.EqualTo( 1f ) );
+
+            // Ensure that the element was not removed from the heap.
+            Assert.That( heap.Count, Is.EqualTo( 1 ) );
+        }
+
+
+        [Test]
+        public void PeekValue()
+        {
+            // Create a new heap.
+            ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Try to PeekValue() and expect an NullReferenceException to be thrown.
+			Assert.Throws<NullReferenceException>( () => {
+				heap.PeekValue();
+			} );
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Store an element and insert it into the heap.
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
+            heap.Push( elem );
+
+            // Ensure that the element was inserted into the heap.
+            Assert.That( heap.Count, Is.EqualTo( 1 ) );
+            Assert.That( heap.Peek(), Is.EqualTo( elem ) );
+
+            // Ensure that the priority of the pushed element is returned.
+            Assert.That( heap.PeekValue(), Is.EqualTo( 2 ) );
+
+            // Ensure that the element was not removed from the heap.
+            Assert.That( heap.Count, Is.EqualTo( 1 ) );
         }
 
 
@@ -268,16 +337,20 @@ namespace Axon.Collections
             // Create a new heap.
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
-            // Try to Pop() and expect an InvalidOperationException to be thrown.
-			Assert.Throws<InvalidOperationException>( () => {
-				heap.Pop();
-			} );
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Expect Pop() to return null for an empty heap.
+			Assert.That( heap.Pop(), Is.EqualTo( null ) );
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
 
             // Ensure that the heap is empty.
             Assert.That( heap.Count, Is.EqualTo( 0 ) );
 
             // Store an element and insert it into the heap.
-            KeyValuePair<float, int> elem = new KeyValuePair<float, int>( 1f, 2 );
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
             heap.Push( elem );
 
             // Ensure that the element was inserted into the heap.
@@ -293,13 +366,48 @@ namespace Axon.Collections
 
 
 		[Test]
+        public void PopPriority()
+        {
+            // Create a new heap.
+            ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Try to PopPriority() and expect an NullReferenceException to be thrown.
+			Assert.Throws<NullReferenceException>( () => {
+				heap.PopPriority();
+			} );
+
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Store an element and insert it into the heap.
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
+            heap.Push( elem );
+
+            // Ensure that the element was inserted into the heap.
+            Assert.That( heap.Peek(), Is.EqualTo( elem ) );
+
+            // Ensure that the priority of the pushed element is returned.
+            Assert.That( heap.PopPriority(), Is.EqualTo( 1f ) );
+
+            // Ensure that the element was removed from the heap.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+        }
+
+
+		[Test]
         public void PopValue()
         {
             // Create a new heap.
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
-            // Try to PopValue() and expect an InvalidOperationException to be thrown.
-			Assert.Throws<InvalidOperationException>( () => {
+            // Ensure that the heap is empty.
+            Assert.That( heap.Count, Is.EqualTo( 0 ) );
+
+            // Try to PopPriority() and expect an NullReferenceException to be thrown.
+			Assert.Throws<NullReferenceException>( () => {
 				heap.PopValue();
 			} );
 
@@ -307,7 +415,7 @@ namespace Axon.Collections
             Assert.That( heap.Count, Is.EqualTo( 0 ) );
 
             // Store an element and insert it into the heap.
-            KeyValuePair<float, int> elem = new KeyValuePair<float, int>( 1f, 2 );
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
             heap.Push( elem );
 
             // Ensure that the element was inserted into the heap.
@@ -331,14 +439,14 @@ namespace Axon.Collections
             Assert.That( heap.Count, Is.EqualTo( 0 ) );
 
             // Store an element and insert it into the heap.
-            KeyValuePair<float, int> elem = new KeyValuePair<float, int>( 1f, 2 );
+            PriorityValuePair<int> elem = new PriorityValuePair<int>( 1f, 2 );
             heap.Push( elem );
 
             // Ensure that the element was inserted into the heap.
             Assert.That( heap.Peek(), Is.EqualTo( elem ) );
 
 			// Store another element with higher priority and insert it as well.
-			elem = new KeyValuePair<float, int>( 2f, 4 );
+			elem = new PriorityValuePair<int>( 2f, 4 );
             heap.Push( elem );
 			
             // Ensure that the element was inserted into the queue and is at the root.
@@ -376,15 +484,12 @@ namespace Axon.Collections
             ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
             // Create and store a few elements.
-            KeyValuePair<float, int> elem1 = new KeyValuePair<float, int>( 1f, 2 );
-            KeyValuePair<float, int> elem2 = new KeyValuePair<float, int>( 2f, 4 );
-            KeyValuePair<float, int> elem3 = new KeyValuePair<float, int>( 3f, 6 );
+            PriorityValuePair<int> elem1 = new PriorityValuePair<int>( 1f, 2 );
+            PriorityValuePair<int> elem2 = new PriorityValuePair<int>( 2f, 4 );
+            PriorityValuePair<int> elem3 = new PriorityValuePair<int>( 3f, 6 );
 
-            // Expect Remove() to return false, indicating no element was removed (since the 
-			// heap is empty and obviously can't be removed from).
-			Assert.Throws<InvalidOperationException>( () => {
-				heap.Remove( elem1 );
-			} );
+            // Expect Remove() to return null for an empty heap.
+			Assert.That( heap.Remove( elem1 ), Is.EqualTo( false ) );
 
             // Insert 2 of the elements into the heap.
             heap.Push( elem2 );
@@ -419,7 +524,7 @@ namespace Axon.Collections
 			ConcurrentBinaryMinHeap<int> heap = new ConcurrentBinaryMinHeap<int>();
 
 			// Enqueue an element into the queue.
-			var elem1 = new KeyValuePair<float, int>( 2f, 4 );
+			var elem1 = new PriorityValuePair<int>( 2f, 4 );
 			heap.Push( elem1 );
 
 			// Ensure that the element was inserted.
@@ -433,7 +538,7 @@ namespace Axon.Collections
 			} );
 
 			// Enqueue another element with higher priority than the last.
-			var elem2 = new KeyValuePair<float, int>( 1f, 2 );
+			var elem2 = new PriorityValuePair<int>( 1f, 2 );
 			heap.Push( elem2 );
 
 			// Ensure that the element was inserted and that the 1st (higher priority) element is 

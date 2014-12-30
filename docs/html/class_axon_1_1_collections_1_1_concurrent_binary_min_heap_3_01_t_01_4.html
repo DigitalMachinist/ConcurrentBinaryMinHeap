@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">ConcurrentBinaryMinHeap
-   &#160;<span id="projectnumber">0.0.1</span>
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">A .NET 3.5 C# implementation of a thread-safe binary min-heap, suitable for implementation of a priority queue.</div>
   </td>
@@ -133,43 +133,49 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ace378fd08e67ff35c0b81cb0d4c2dc9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#ace378fd08e67ff35c0b81cb0d4c2dc9e">ConcurrentBinaryMinHeap</a> (int initialCapacity)</td></tr>
 <tr class="memdesc:ace378fd08e67ff35c0b81cb0d4c2dc9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new heap with the given initial size of the array implementing it internally.  <a href="#ace378fd08e67ff35c0b81cb0d4c2dc9e">More...</a><br /></td></tr>
 <tr class="separator:ace378fd08e67ff35c0b81cb0d4c2dc9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac842079086bf390c04d980b8b447b7ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#ac842079086bf390c04d980b8b447b7ad">Add</a> (KeyValuePair&lt; float, T &gt; element)</td></tr>
-<tr class="memdesc:ac842079086bf390c04d980b8b447b7ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a KeyValuePair as a new element into the heap.  <a href="#ac842079086bf390c04d980b8b447b7ad">More...</a><br /></td></tr>
-<tr class="separator:ac842079086bf390c04d980b8b447b7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ae9c93acb53d0e91f780a6d00cfcf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a31ae9c93acb53d0e91f780a6d00cfcf0">Add</a> (PriorityValuePair&lt; T &gt; element)</td></tr>
+<tr class="memdesc:a31ae9c93acb53d0e91f780a6d00cfcf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts a PriorityValuePair as a new element into the heap.  <a href="#a31ae9c93acb53d0e91f780a6d00cfcf0">More...</a><br /></td></tr>
+<tr class="separator:a31ae9c93acb53d0e91f780a6d00cfcf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53faf7ae81d8bffb5fcefa312b872a94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a53faf7ae81d8bffb5fcefa312b872a94">Clear</a> ()</td></tr>
 <tr class="memdesc:a53faf7ae81d8bffb5fcefa312b872a94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all elements from the heap.  <a href="#a53faf7ae81d8bffb5fcefa312b872a94">More...</a><br /></td></tr>
 <tr class="separator:a53faf7ae81d8bffb5fcefa312b872a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1eb162bc44ef4181709d5a5036daf3da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a1eb162bc44ef4181709d5a5036daf3da">Contains</a> (KeyValuePair&lt; float, T &gt; element)</td></tr>
-<tr class="memdesc:a1eb162bc44ef4181709d5a5036daf3da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether or not the heap contains the given KeyValuePair element.  <a href="#a1eb162bc44ef4181709d5a5036daf3da">More...</a><br /></td></tr>
-<tr class="separator:a1eb162bc44ef4181709d5a5036daf3da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc742197d3a2981a97af9b123fe2e4ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#afc742197d3a2981a97af9b123fe2e4ed">CopyTo</a> (KeyValuePair&lt; float, T &gt;[] array, int arrayIndex)</td></tr>
-<tr class="memdesc:afc742197d3a2981a97af9b123fe2e4ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the elements of the heap to an Array, starting at a particular index. This method does not guarantee that elements will be copied in the sorted order.  <a href="#afc742197d3a2981a97af9b123fe2e4ed">More...</a><br /></td></tr>
-<tr class="separator:afc742197d3a2981a97af9b123fe2e4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf29c865bae8efa016a59a018de22581"><td class="memItemLeft" align="right" valign="top">IEnumerator&lt; KeyValuePair<br class="typebreak" />
-&lt; float, T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#adf29c865bae8efa016a59a018de22581">GetEnumerator</a> ()</td></tr>
-<tr class="memdesc:adf29c865bae8efa016a59a018de22581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an enumerator that iterates through the heap's elements. This enumerator is not guaranteed to iterate through elements in sorted order, and indeed, is not even guaranteed to iterate through elements by priority (although in general the iterated elements will tend from high to low priority values).  <a href="#adf29c865bae8efa016a59a018de22581">More...</a><br /></td></tr>
-<tr class="separator:adf29c865bae8efa016a59a018de22581"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05750f72ada0404634f6f399b115ec4d"><td class="memItemLeft" align="right" valign="top">KeyValuePair&lt; float, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a05750f72ada0404634f6f399b115ec4d">Peek</a> ()</td></tr>
-<tr class="memdesc:a05750f72ada0404634f6f399b115ec4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current root element of the heap, but don't remove it.  <a href="#a05750f72ada0404634f6f399b115ec4d">More...</a><br /></td></tr>
-<tr class="separator:a05750f72ada0404634f6f399b115ec4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c43e93176afdf05424179c007be8fac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a0c43e93176afdf05424179c007be8fac">Contains</a> (PriorityValuePair&lt; T &gt; element)</td></tr>
+<tr class="memdesc:a0c43e93176afdf05424179c007be8fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether or not the heap contains the given PriorityValuePair element.  <a href="#a0c43e93176afdf05424179c007be8fac">More...</a><br /></td></tr>
+<tr class="separator:a0c43e93176afdf05424179c007be8fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe42c659c59aed0907876a1620dca01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a0fe42c659c59aed0907876a1620dca01">CopyTo</a> (PriorityValuePair&lt; T &gt;[] array, int arrayIndex)</td></tr>
+<tr class="memdesc:a0fe42c659c59aed0907876a1620dca01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the elements of the heap to an Array, starting at a particular index. This method does not guarantee that elements will be copied in the sorted order.  <a href="#a0fe42c659c59aed0907876a1620dca01">More...</a><br /></td></tr>
+<tr class="separator:a0fe42c659c59aed0907876a1620dca01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a8002827f6bb9ba3d98cd09222fece1"><td class="memItemLeft" align="right" valign="top">IEnumerator&lt; PriorityValuePair<br class="typebreak" />
+&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a9a8002827f6bb9ba3d98cd09222fece1">GetEnumerator</a> ()</td></tr>
+<tr class="memdesc:a9a8002827f6bb9ba3d98cd09222fece1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an enumerator that iterates through the heap's elements. This enumerator is not guaranteed to iterate through elements in sorted order, and indeed, is not even guaranteed to iterate through elements by priority (although in general the iterated elements will tend from high to low priority values).  <a href="#a9a8002827f6bb9ba3d98cd09222fece1">More...</a><br /></td></tr>
+<tr class="separator:a9a8002827f6bb9ba3d98cd09222fece1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b49273243c2545b67ed67ee861f3da0"><td class="memItemLeft" align="right" valign="top">PriorityValuePair&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a1b49273243c2545b67ed67ee861f3da0">Peek</a> ()</td></tr>
+<tr class="memdesc:a1b49273243c2545b67ed67ee861f3da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current root element of the heap, but don't remove it.  <a href="#a1b49273243c2545b67ed67ee861f3da0">More...</a><br /></td></tr>
+<tr class="separator:a1b49273243c2545b67ed67ee861f3da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d7d605273fdbc30fad9a2cd3e608e90"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a0d7d605273fdbc30fad9a2cd3e608e90">PeekPriority</a> ()</td></tr>
+<tr class="memdesc:a0d7d605273fdbc30fad9a2cd3e608e90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the priority of the current root element of the heap, but don't remove it.  <a href="#a0d7d605273fdbc30fad9a2cd3e608e90">More...</a><br /></td></tr>
+<tr class="separator:a0d7d605273fdbc30fad9a2cd3e608e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2faa1d4a578bdaf7b87e43a0dd9c5119"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a2faa1d4a578bdaf7b87e43a0dd9c5119">PeekValue</a> ()</td></tr>
 <tr class="memdesc:a2faa1d4a578bdaf7b87e43a0dd9c5119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of the current root element of the heap, but don't remove it.  <a href="#a2faa1d4a578bdaf7b87e43a0dd9c5119">More...</a><br /></td></tr>
 <tr class="separator:a2faa1d4a578bdaf7b87e43a0dd9c5119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96ac0f2101041d95684dbe0fc1c2f436"><td class="memItemLeft" align="right" valign="top">KeyValuePair&lt; float, T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a96ac0f2101041d95684dbe0fc1c2f436">Pop</a> ()</td></tr>
-<tr class="memdesc:a96ac0f2101041d95684dbe0fc1c2f436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted.  <a href="#a96ac0f2101041d95684dbe0fc1c2f436">More...</a><br /></td></tr>
-<tr class="separator:a96ac0f2101041d95684dbe0fc1c2f436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6e7744ec34d5a0a12aed617fe8419ef"><td class="memItemLeft" align="right" valign="top">PriorityValuePair&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#ab6e7744ec34d5a0a12aed617fe8419ef">Pop</a> ()</td></tr>
+<tr class="memdesc:ab6e7744ec34d5a0a12aed617fe8419ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted.  <a href="#ab6e7744ec34d5a0a12aed617fe8419ef">More...</a><br /></td></tr>
+<tr class="separator:ab6e7744ec34d5a0a12aed617fe8419ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fcc1f52182b629a19af496d5f0fabef"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a7fcc1f52182b629a19af496d5f0fabef">PopPriority</a> ()</td></tr>
+<tr class="memdesc:a7fcc1f52182b629a19af496d5f0fabef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the priority of the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted.  <a href="#a7fcc1f52182b629a19af496d5f0fabef">More...</a><br /></td></tr>
+<tr class="separator:a7fcc1f52182b629a19af496d5f0fabef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39a5c66e4eae404ebfdd8c06c3f0f6f2"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a39a5c66e4eae404ebfdd8c06c3f0f6f2">PopValue</a> ()</td></tr>
 <tr class="memdesc:a39a5c66e4eae404ebfdd8c06c3f0f6f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted.  <a href="#a39a5c66e4eae404ebfdd8c06c3f0f6f2">More...</a><br /></td></tr>
 <tr class="separator:a39a5c66e4eae404ebfdd8c06c3f0f6f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf64ce810d386840ac16219f52d214a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#abf64ce810d386840ac16219f52d214a4">Push</a> (KeyValuePair&lt; float, T &gt; element)</td></tr>
-<tr class="memdesc:abf64ce810d386840ac16219f52d214a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new element into the heap and heapify it into its correct position, given an existing KeyValuePair containing a float priority as its key and a value.  <a href="#abf64ce810d386840ac16219f52d214a4">More...</a><br /></td></tr>
-<tr class="separator:abf64ce810d386840ac16219f52d214a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60657b171f002ed15edddff41afb9e6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a60657b171f002ed15edddff41afb9e6c">Push</a> (PriorityValuePair&lt; T &gt; element)</td></tr>
+<tr class="memdesc:a60657b171f002ed15edddff41afb9e6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new element into the heap and heapify it into its correct position, given an existing PriorityValuePair containing a float priority as its key and a value.  <a href="#a60657b171f002ed15edddff41afb9e6c">More...</a><br /></td></tr>
+<tr class="separator:a60657b171f002ed15edddff41afb9e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a599c6f9ce88cb1d83aebebf4bb9198fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a599c6f9ce88cb1d83aebebf4bb9198fb">Push</a> (float priority, T value)</td></tr>
 <tr class="memdesc:a599c6f9ce88cb1d83aebebf4bb9198fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new element into the heap and heapify it into its correct position, given a float priority and some value to create an element from.  <a href="#a599c6f9ce88cb1d83aebebf4bb9198fb">More...</a><br /></td></tr>
 <tr class="separator:a599c6f9ce88cb1d83aebebf4bb9198fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a629b3355adbc5e2fe4cb5ed99531e690"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a629b3355adbc5e2fe4cb5ed99531e690">Remove</a> (KeyValuePair&lt; float, T &gt; element)</td></tr>
-<tr class="memdesc:a629b3355adbc5e2fe4cb5ed99531e690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the first occurrence of the given KeyValuePair element within the heap.  <a href="#a629b3355adbc5e2fe4cb5ed99531e690">More...</a><br /></td></tr>
-<tr class="separator:a629b3355adbc5e2fe4cb5ed99531e690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a966dd9dac9ee5d42adaaf7d4c3096d85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#a966dd9dac9ee5d42adaaf7d4c3096d85">Remove</a> (PriorityValuePair&lt; T &gt; element)</td></tr>
+<tr class="memdesc:a966dd9dac9ee5d42adaaf7d4c3096d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the first occurrence of the given PriorityValuePair element within the heap.  <a href="#a966dd9dac9ee5d42adaaf7d4c3096d85">More...</a><br /></td></tr>
+<tr class="separator:a966dd9dac9ee5d42adaaf7d4c3096d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -243,35 +249,24 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ac842079086bf390c04d980b8b447b7ad"></a>
+<a class="anchor" id="a31ae9c93acb53d0e91f780a6d00cfcf0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Add </td>
           <td>(</td>
-          <td class="paramtype">KeyValuePair&lt; float, T &gt;&#160;</td>
+          <td class="paramtype">PriorityValuePair&lt; T &gt;&#160;</td>
           <td class="paramname"><em>element</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Inserts a KeyValuePair as a new element into the heap. </p>
+<p>Inserts a PriorityValuePair as a new element into the heap. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">item</td><td>KeyValuePair to add as a new element.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given element is null. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by HeapifyBottomUp() when the given index is out of range. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by SwapElements() when the inputs to SwapElements() are invalid. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by SwapElements() when there are less than 2 elements in the heap. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by HeapifyBottomUp() when the heap is empty. </td></tr>
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown by List.Add() when the heap is in read-only mode. </td></tr>
+    <tr><td class="paramname">item</td><td>PriorityValuePair to add as a new element.</td></tr>
   </table>
   </dd>
 </dl>
@@ -292,54 +287,42 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Clears all elements from the heap. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown when the heap is in read-only mode. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a class="anchor" id="a1eb162bc44ef4181709d5a5036daf3da"></a>
+<a class="anchor" id="a0c43e93176afdf05424179c007be8fac"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Contains </td>
           <td>(</td>
-          <td class="paramtype">KeyValuePair&lt; float, T &gt;&#160;</td>
+          <td class="paramtype">PriorityValuePair&lt; T &gt;&#160;</td>
           <td class="paramname"><em>element</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns whether or not the heap contains the given KeyValuePair element. </p>
+<p>Returns whether or not the heap contains the given PriorityValuePair element. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">item</td><td>The KeyValuePair to locate in the heap.</td></tr>
+    <tr><td class="paramname">item</td><td>The PriorityValuePair to locate in the heap.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if item is found in the heap; otherwise, <code>false</code>.</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown when the heap is in read-only mode. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a class="anchor" id="afc742197d3a2981a97af9b123fe2e4ed"></a>
+<a class="anchor" id="a0fe42c659c59aed0907876a1620dca01"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.CopyTo </td>
           <td>(</td>
-          <td class="paramtype">KeyValuePair&lt; float, T &gt;[]&#160;</td>
+          <td class="paramtype">PriorityValuePair&lt; T &gt;[]&#160;</td>
           <td class="paramname"><em>array</em>, </td>
         </tr>
         <tr>
@@ -364,24 +347,15 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given array is null. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown when the given index is less than 0. </td></tr>
-    <tr><td class="paramname">ArgumentException</td><td>Thrown if the given array is multi-dimensional. </td></tr>
-    <tr><td class="paramname">ArgumentException</td><td>Thrown if there is not enough space in the array from arrayIndex to the end to hold the heap data to be copied. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a class="anchor" id="adf29c865bae8efa016a59a018de22581"></a>
+<a class="anchor" id="a9a8002827f6bb9ba3d98cd09222fece1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">IEnumerator&lt; KeyValuePair&lt;float, T&gt; &gt; Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.GetEnumerator </td>
+          <td class="memname">IEnumerator&lt; PriorityValuePair&lt;T&gt; &gt; Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.GetEnumerator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -394,12 +368,12 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a05750f72ada0404634f6f399b115ec4d"></a>
+<a class="anchor" id="a1b49273243c2545b67ed67ee861f3da0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">KeyValuePair&lt;float, T&gt; Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Peek </td>
+          <td class="memname">PriorityValuePair&lt;T&gt; Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Peek </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -408,12 +382,23 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the current root element of the heap, but don't remove it. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown when the heap is empty. </td></tr>
-  </table>
-  </dd>
-</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0d7d605273fdbc30fad9a2cd3e608e90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.PeekPriority </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the priority of the current root element of the heap, but don't remove it. </p>
 
 </div>
 </div>
@@ -431,21 +416,15 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the value of the current root element of the heap, but don't remove it. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown when the heap is empty. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a class="anchor" id="a96ac0f2101041d95684dbe0fc1c2f436"></a>
+<a class="anchor" id="ab6e7744ec34d5a0a12aed617fe8419ef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">KeyValuePair&lt;float, T&gt; Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Pop </td>
+          <td class="memname">PriorityValuePair&lt;T&gt; Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Pop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -454,18 +433,23 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given element is null. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by HeapifyTopDown() when the given index is out of range. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by SwapElements() when the inputs to SwapElements() are invalid. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by List.RemoveAt() when the inputs to List.RemoveAt() are invalid. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by SwapElements() when there are less than 2 elements in the heap. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown when the heap is empty. </td></tr>
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown by List.Clear() when the heap is in read-only mode. </td></tr>
-  </table>
-  </dd>
-</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7fcc1f52182b629a19af496d5f0fabef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.PopPriority </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the priority of the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted. </p>
 
 </div>
 </div>
@@ -483,49 +467,27 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return the value of the current root element of the heap, and then remove it. This operation will heapify the heap after removal to ensure that it remains sorted. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given element is null. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by HeapifyTopDown() when the given index is out of range. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by SwapElements() when the inputs to SwapElements() are invalid. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by List.RemoveAt() when the inputs to List.RemoveAt() are invalid. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by SwapElements() when there are less than 2 elements in the heap. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown when the heap is empty. </td></tr>
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown by List.Clear() when the heap is in read-only mode. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a class="anchor" id="abf64ce810d386840ac16219f52d214a4"></a>
+<a class="anchor" id="a60657b171f002ed15edddff41afb9e6c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Push </td>
           <td>(</td>
-          <td class="paramtype">KeyValuePair&lt; float, T &gt;&#160;</td>
+          <td class="paramtype">PriorityValuePair&lt; T &gt;&#160;</td>
           <td class="paramname"><em>element</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Insert a new element into the heap and heapify it into its correct position, given an existing KeyValuePair containing a float priority as its key and a value. </p>
+<p>Insert a new element into the heap and heapify it into its correct position, given an existing PriorityValuePair containing a float priority as its key and a value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">element</td><td>A KeyValuePair containing a float priority as its key and a generically-typed value.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by HeapifyBottomUp() when the given index is out of range. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by SwapElements() when the inputs to SwapElements() are invalid. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by SwapElements() when there are less than 2 elements in the heap. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by HeapifyBottomUp() when the heap is empty. </td></tr>
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown by <a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#ac842079086bf390c04d980b8b447b7ad" title="Inserts a KeyValuePair as a new element into the heap. ">Add()</a> when the heap is in read-only mode. </td></tr>
+    <tr><td class="paramname">element</td><td>A PriorityValuePair containing a float priority as its key and a generically-typed value.</td></tr>
   </table>
   </dd>
 </dl>
@@ -564,51 +526,31 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by HeapifyBottomUp() when the given index is out of range. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by SwapElements() when the inputs to SwapElements() are invalid. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by SwapElements() when there are less than 2 elements in the heap. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by HeapifyBottomUp() when the heap is empty. </td></tr>
-    <tr><td class="paramname">NotSupportedException</td><td>Thrown by <a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html#ac842079086bf390c04d980b8b447b7ad" title="Inserts a KeyValuePair as a new element into the heap. ">Add()</a> when the heap is in read-only mode. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a class="anchor" id="a629b3355adbc5e2fe4cb5ed99531e690"></a>
+<a class="anchor" id="a966dd9dac9ee5d42adaaf7d4c3096d85"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool Axon.Collections.ConcurrentBinaryMinHeap&lt; T &gt;.Remove </td>
           <td>(</td>
-          <td class="paramtype">KeyValuePair&lt; float, T &gt;&#160;</td>
+          <td class="paramtype">PriorityValuePair&lt; T &gt;&#160;</td>
           <td class="paramname"><em>element</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Removes the first occurrence of the given KeyValuePair element within the heap. </p>
+<p>Removes the first occurrence of the given PriorityValuePair element within the heap. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">item</td><td>The KeyValuePair element to remove from the heap.</td></tr>
+    <tr><td class="paramname">item</td><td>The PriorityValuePair element to remove from the heap.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if item was successfully removed from the priority heap. This method returns <code>false</code> if item is not found in the collection.</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by HeapifyTopDown() when the inputs to HeapifyTopDown() are out of range. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by SwapElements() when the inputs to SwapElements() are invalid. </td></tr>
-    <tr><td class="paramname">ArgumentOutOfRangeException</td><td>Thrown by List.RemoveAt() when the inputs to List.RemoveAt() are invalid. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown by SwapElements() when there are less than 2 elements in the heap. </td></tr>
-    <tr><td class="paramname">InvalidOperationException</td><td>Thrown when the heap is empty. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -710,7 +652,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_axon.html">Axon</a></li><li class="navelem"><a class="el" href="namespace_axon_1_1_collections.html">Collections</a></li><li class="navelem"><a class="el" href="class_axon_1_1_collections_1_1_concurrent_binary_min_heap_3_01_t_01_4.html">ConcurrentBinaryMinHeap< T ></a></li>
-    <li class="footer">Generated on Mon Dec 29 2014 14:18:58 for ConcurrentBinaryMinHeap by
+    <li class="footer">Generated on Mon Dec 29 2014 23:49:00 for ConcurrentBinaryMinHeap by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
   </ul>

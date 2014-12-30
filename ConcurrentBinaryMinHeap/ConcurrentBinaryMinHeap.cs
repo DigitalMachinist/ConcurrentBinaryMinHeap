@@ -13,14 +13,14 @@ namespace Axon.Collections
     /// <typeparam name="T">The type of data to be queued.</typeparam>
     public
     class ConcurrentBinaryMinHeap<T>
-    : ICollection< KeyValuePair<float, T> >
+    : ICollection< PriorityValuePair<T> >
     {
         #region Instance members
 
         /// <summary>
         /// The actual List array structure that backs the implementation of the heap.
         /// </summary>
-        private List< KeyValuePair<float, T> > __data;
+        private List< PriorityValuePair<T> > __data;
 
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Axon.Collections
         public
         ConcurrentBinaryMinHeap()
         {
-            __data = new List< KeyValuePair<float, T> >();
+            __data = new List< PriorityValuePair<T> >();
         }
 
 
@@ -132,7 +132,7 @@ namespace Axon.Collections
         {
             try
             {
-                __data = new List< KeyValuePair<float, T> >( initialCapacity );
+                __data = new List< PriorityValuePair<T> >( initialCapacity );
             }
             catch ( Exception e )
             {
@@ -146,48 +146,20 @@ namespace Axon.Collections
         #region Public methods
 
         /// <summary>
-        /// Inserts a KeyValuePair as a new element into the heap.
+        /// Inserts a PriorityValuePair as a new element into the heap.
         /// </summary>
-        /// <param name="item">KeyValuePair to add as a new element.</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the given element is null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by HeapifyBottomUp() when the given index is out of range.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by SwapElements() when the inputs to SwapElements() are invalid.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by SwapElements() when there are less than 2 elements in the heap.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by HeapifyBottomUp() when the heap is empty.
-        /// </exception>
-        /// <exception cref="NotSupportedException">
-        /// Thrown by List.Add() when the heap is in read-only mode.
-        /// </exception>
+        /// <param name="item">PriorityValuePair to add as a new element.</param>
         public
         void
-        Add( KeyValuePair<float, T> element )
+        Add( PriorityValuePair<T> element )
         {
-            try
-            {
-                Push( element );
-            }
-            catch ( Exception e )
-            {
-                throw e;
-            }
+            Push( element );
         }
 
 
         /// <summary>
         /// Clears all elements from the heap.
         /// </summary>
-        /// <exception cref="NotSupportedException">
-        /// Thrown when the heap is in read-only mode.
-        /// </exception>
         public
         void
         Clear()
@@ -211,16 +183,13 @@ namespace Axon.Collections
 
 
         /// <summary>
-        /// Returns whether or not the heap contains the given KeyValuePair element.
+        /// Returns whether or not the heap contains the given PriorityValuePair element.
         /// </summary>
-        /// <param name="item">The KeyValuePair to locate in the heap.</param>
+        /// <param name="item">The PriorityValuePair to locate in the heap.</param>
         /// <returns><c>true</c> if item is found in the heap; otherwise, <c>false</c>.</returns>
-        /// <exception cref="NotSupportedException">
-        /// Thrown when the heap is in read-only mode.
-        /// </exception>
         public
         bool
-        Contains( KeyValuePair<float, T> element )
+        Contains( PriorityValuePair<T> element )
         {
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
@@ -250,22 +219,9 @@ namespace Axon.Collections
         /// <param name="array">The one-dimensional Array that is the destination of the elements
         /// copied from the heap. The Array must have zero-based indexing. </param>
         /// <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the given array is null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when the given index is less than 0.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// Thrown if the given array is multi-dimensional.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// Thrown if there is not enough space in the array from arrayIndex to the end to hold the
-        /// heap data to be copied.
-        /// </exception>
         public
         void
-        CopyTo( KeyValuePair<float, T>[] array, int arrayIndex )
+        CopyTo( PriorityValuePair<T>[] array, int arrayIndex )
         {
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
@@ -293,12 +249,12 @@ namespace Axon.Collections
         /// </summary>
         /// <returns>An generic enumerator of the heap's contents.</returns>
         public
-        IEnumerator< KeyValuePair<float, T> >
+        IEnumerator< PriorityValuePair<T> >
         GetEnumerator()
         {
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
-            IEnumerator< KeyValuePair<float, T> > result = null;
+            IEnumerator< PriorityValuePair<T> > result = null;
             try
             {
                 result = __data.GetEnumerator();
@@ -342,21 +298,19 @@ namespace Axon.Collections
         /// <summary>
         /// Return the current root element of the heap, but don't remove it.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the heap is empty.
-        /// </exception>
         public
-        KeyValuePair<float, T>
+        PriorityValuePair<T>
         Peek()
         {
             if ( IsEmpty )
             {
-                throw new InvalidOperationException( "The heap is empty." );
+                //throw new InvalidOperationException( "The heap is empty." );
+				return null;
             }
 
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
-            KeyValuePair<float, T> result;
+            PriorityValuePair<T> result;
             try
             {
                 // Return the root element of the heap.
@@ -373,16 +327,24 @@ namespace Axon.Collections
 
 
 		/// <summary>
+        /// Return the priority of the current root element of the heap, but don't remove it.
+        /// </summary>
+        public
+        float
+        PeekPriority()
+        {
+			return Peek().Priority;
+        }
+
+
+		/// <summary>
         /// Return the value of the current root element of the heap, but don't remove it.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the heap is empty.
-        /// </exception>
         public
         T
         PeekValue()
         {
-            return Peek().Value;
+			return Peek().Value;
         }
 
 
@@ -390,39 +352,19 @@ namespace Axon.Collections
         /// Return the current root element of the heap, and then remove it. This operation will
         /// heapify the heap after removal to ensure that it remains sorted.
         /// </summary>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the given element is null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by HeapifyTopDown() when the given index is out of range.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by SwapElements() when the inputs to SwapElements() are invalid.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by List.RemoveAt() when the inputs to List.RemoveAt() are invalid.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by SwapElements() when there are less than 2 elements in the heap.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the heap is empty.
-        /// </exception>
-        /// <exception cref="NotSupportedException">
-        /// Thrown by List.Clear() when the heap is in read-only mode.
-        /// </exception>
         public
-        KeyValuePair<float, T>
+        PriorityValuePair<T>
         Pop()
         {
             if ( IsEmpty )
             {
-                throw new InvalidOperationException( "The heap is empty." );
+                //throw new InvalidOperationException( "The heap is empty." );
+				return null;
             }
 
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
-            KeyValuePair<float, T> result;
+            PriorityValuePair<T> result;
             try
             {
                 // Keep a reference to the element at the root of the heap.
@@ -458,71 +400,38 @@ namespace Axon.Collections
 
 
 		/// <summary>
+        /// Return the priority of the current root element of the heap, and then remove it. This 
+		/// operation will heapify the heap after removal to ensure that it remains sorted.
+        /// </summary>
+        public
+        float
+        PopPriority()
+        {
+			return Pop().Priority;
+		}
+
+
+		/// <summary>
         /// Return the value of the current root element of the heap, and then remove it. This 
 		/// operation will heapify the heap after removal to ensure that it remains sorted.
         /// </summary>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown when the given element is null.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by HeapifyTopDown() when the given index is out of range.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by SwapElements() when the inputs to SwapElements() are invalid.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by List.RemoveAt() when the inputs to List.RemoveAt() are invalid.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by SwapElements() when there are less than 2 elements in the heap.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the heap is empty.
-        /// </exception>
-        /// <exception cref="NotSupportedException">
-        /// Thrown by List.Clear() when the heap is in read-only mode.
-        /// </exception>
         public
         T
         PopValue()
         {
-			T result;
-			try
-			{
-				result = Pop().Value;
-			}
-			catch ( Exception e )
-			{
-				throw e;
-			}
-			return result;
+			return Pop().Value;
 		}
 
 
         /// <summary>
         /// Insert a new element into the heap and heapify it into its correct position, given
-        /// an existing KeyValuePair containing a float priority as its key and a value.
+        /// an existing PriorityValuePair containing a float priority as its key and a value.
         /// </summary>
-        /// <param name="element">A KeyValuePair containing a float priority as its key and a
+        /// <param name="element">A PriorityValuePair containing a float priority as its key and a
         /// generically-typed value.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by HeapifyBottomUp() when the given index is out of range.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by SwapElements() when the inputs to SwapElements() are invalid.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by SwapElements() when there are less than 2 elements in the heap.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by HeapifyBottomUp() when the heap is empty.
-        /// </exception>
-        /// <exception cref="NotSupportedException">
-        /// Thrown by Add() when the heap is in read-only mode.
-        /// </exception>
         public
         void
-        Push( KeyValuePair<float, T> element )
+        Push( PriorityValuePair<T> element )
         {
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
@@ -552,21 +461,6 @@ namespace Axon.Collections
         /// </summary>
         /// <param name="priority">A float priority.</param>
         /// <param name="value">A generically-typed object.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by HeapifyBottomUp() when the given index is out of range.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by SwapElements() when the inputs to SwapElements() are invalid.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by SwapElements() when there are less than 2 elements in the heap.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by HeapifyBottomUp() when the heap is empty.
-        /// </exception>
-        /// <exception cref="NotSupportedException">
-        /// Thrown by Add() when the heap is in read-only mode.
-        /// </exception>
         public
         void
         Push( float priority, T value )
@@ -576,7 +470,7 @@ namespace Axon.Collections
             try
             {
                 // Add a new element to the heap at the end of the data list.
-                __data.Add( new KeyValuePair<float, T>( priority, value ) );
+                __data.Add( new PriorityValuePair<T>( priority, value ) );
 
                 // Heapify bottom up to sort the element into the correct position in the heap.
                 HeapifyBottomUp( __data.Count - 1 );
@@ -594,33 +488,19 @@ namespace Axon.Collections
 
 
         /// <summary>
-        /// Removes the first occurrence of the given KeyValuePair element within the heap.
+        /// Removes the first occurrence of the given PriorityValuePair element within the heap.
         /// </summary>
-        /// <param name="item">The KeyValuePair element to remove from the heap.</param>
+        /// <param name="item">The PriorityValuePair element to remove from the heap.</param>
         /// <returns><c>true</c> if item was successfully removed from the priority heap.
         /// This method returns <c>false</c> if item is not found in the collection.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by HeapifyTopDown() when the inputs to HeapifyTopDown() are out of range.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by SwapElements() when the inputs to SwapElements() are invalid.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown by List.RemoveAt() when the inputs to List.RemoveAt() are invalid.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown by SwapElements() when there are less than 2 elements in the heap.
-        /// </exception>
-        /// <exception cref="InvalidOperationException">
-        /// Thrown when the heap is empty.
-        /// </exception>
         public
         bool
-        Remove( KeyValuePair<float, T> element )
+        Remove( PriorityValuePair<T> element )
         {
             if ( IsEmpty )
             {
-                throw new InvalidOperationException( "The heap is empty." );
+                //throw new InvalidOperationException( "The heap is empty." );
+				return false;
             }
 
             // Lock the thread -- CRITICAL SECTION BEGIN
@@ -718,7 +598,7 @@ namespace Axon.Collections
             try
             {
                 // Do a plain old swap of the elements at index1 and index2 in the heap.
-                KeyValuePair<float, T> temp = __data[ index1 ];
+                PriorityValuePair<T> temp = __data[ index1 ];
                 __data[ index1 ] = __data[ index2 ];
                 __data[ index2 ] = temp;
             }
@@ -783,8 +663,8 @@ namespace Axon.Collections
                 do
                 {
                     int parentIndex = ( index - 1 ) / 2;
-                    priority        = __data[ index ].Key;
-                    priorityParent  = __data[ parentIndex ].Key;
+                    priority        = __data[ index ].Priority;
+                    priorityParent  = __data[ parentIndex ].Priority;
 
 					//Console.WriteLine( "Priority: " + priority );
 					//Console.WriteLine( "PARENT Priority: " + priorityParent );
@@ -860,7 +740,7 @@ namespace Axon.Collections
 					// condition (index != highestPriority would result in the while never running 
 					// if so).
                     highestPriority = index;
-                    float priority = __data[ index ].Key;
+                    float priority = __data[ index ].Priority;
 
 					//Console.WriteLine( "Priority: " + priority );
 
@@ -869,7 +749,7 @@ namespace Axon.Collections
                     int leftIndex = 2 * index + 1;
                     if ( leftIndex < __data.Count )
                     {
-                        float priorityLeftChild = __data[ leftIndex ].Key;
+                        float priorityLeftChild = __data[ leftIndex ].Priority;
                         if ( priority < priorityLeftChild )
                         {
                             // Update the highestPriority index with the index of the left child.
@@ -883,7 +763,7 @@ namespace Axon.Collections
                     int rightIndex = 2 * index + 2;
                     if ( rightIndex < __data.Count )
                     {
-                        float priorityRightChild = __data[ rightIndex ].Key;
+                        float priorityRightChild = __data[ rightIndex ].Priority;
                         if ( priority < priorityRightChild )
                         {
                             // Update the highestPriority index with the index of the right child.
