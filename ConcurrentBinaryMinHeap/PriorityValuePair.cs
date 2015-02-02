@@ -10,10 +10,10 @@ namespace Axon.Collections
 		#region Instance members
 
 		/// <summary>
-		/// The floating-point value indicating the priority value of this pair. Typically this 
-		/// affects how it will be sorted in a binary heap or priority queue.
+		/// The double-precision floating-point value indicating the priority value of this pair. 
+		/// Typically this affects how it will be sorted in a binary heap or priority queue.
 		/// </summary>
-		public float Priority { get; set; }
+		public double Priority { get; set; }
 
 
 		/// <summary>
@@ -39,12 +39,13 @@ namespace Axon.Collections
 		/// <summary>
 		/// Create a new priority-value pair by specifying its initial priority and value.
 		/// </summary>
-		/// <param name="priority">The floating-point value indicating the priority value of this 
-		/// pair. Typically this affects how it will be sorted in a binary heap or priority queue.
+		/// <param name="priority">The double-precision floating-point value indicating the 
+		/// priority value of this pair. Typically this affects how it will be sorted in a binary 
+		/// heap or priority queue.
 		/// </param>
 		/// <param name="value">A generically-typed value that may contain any kind of data.
 		/// </param>
-		public PriorityValuePair( float priority, TValue value )
+		public PriorityValuePair( double priority, TValue value )
 		{
 			Priority = priority;
 			Value = value;

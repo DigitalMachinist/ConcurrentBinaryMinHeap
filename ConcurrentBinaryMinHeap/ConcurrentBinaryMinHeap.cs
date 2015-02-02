@@ -326,28 +326,6 @@ namespace Axon.Collections
         }
 
 
-		/// <summary>
-        /// Return the priority of the current root element of the heap, but don't remove it.
-        /// </summary>
-        public
-        float
-        PeekPriority()
-        {
-			return Peek().Priority;
-        }
-
-
-		/// <summary>
-        /// Return the value of the current root element of the heap, but don't remove it.
-        /// </summary>
-        public
-        T
-        PeekValue()
-        {
-			return Peek().Value;
-        }
-
-
         /// <summary>
         /// Return the current root element of the heap, and then remove it. This operation will
         /// heapify the heap after removal to ensure that it remains sorted.
@@ -358,7 +336,6 @@ namespace Axon.Collections
         {
             if ( IsEmpty )
             {
-                //throw new InvalidOperationException( "The heap is empty." );
 				return null;
             }
 
@@ -378,7 +355,7 @@ namespace Axon.Collections
                 else
                 {
                     // Move the last element up to be the root of the heap.
-                    SwapElements( 0, __data.Count - 1 );
+					__data[ 0 ] = __data[ __data.Count - 1 ];
                     __data.RemoveAt( __data.Count - 1 );
 
                     // Heapify to move the new root into its correct position within the heap.
@@ -399,35 +376,11 @@ namespace Axon.Collections
         }
 
 
-		/// <summary>
-        /// Return the priority of the current root element of the heap, and then remove it. This 
-		/// operation will heapify the heap after removal to ensure that it remains sorted.
-        /// </summary>
-        public
-        float
-        PopPriority()
-        {
-			return Pop().Priority;
-		}
-
-
-		/// <summary>
-        /// Return the value of the current root element of the heap, and then remove it. This 
-		/// operation will heapify the heap after removal to ensure that it remains sorted.
-        /// </summary>
-        public
-        T
-        PopValue()
-        {
-			return Pop().Value;
-		}
-
-
         /// <summary>
         /// Insert a new element into the heap and heapify it into its correct position, given
-        /// an existing PriorityValuePair containing a float priority as its key and a value.
+        /// an existing PriorityValuePair containing a double priority as its key and a value.
         /// </summary>
-        /// <param name="element">A PriorityValuePair containing a float priority as its key and a
+        /// <param name="element">A PriorityValuePair containing a double priority as its key and a
         /// generically-typed value.</param>
         public
         void
@@ -457,13 +410,13 @@ namespace Axon.Collections
 
         /// <summary>
         /// Insert a new element into the heap and heapify it into its correct position, given
-        /// a float priority and some value to create an element from.
+        /// a double priority and some value to create an element from.
         /// </summary>
-        /// <param name="priority">A float priority.</param>
+        /// <param name="priority">A double priority.</param>
         /// <param name="value">A generically-typed object.</param>
         public
         void
-        Push( float priority, T value )
+        Push( double priority, T value )
         {
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
@@ -551,7 +504,6 @@ namespace Axon.Collections
 
             return result;
         }
-
 
         #endregion
 
@@ -646,9 +598,6 @@ namespace Axon.Collections
                 throw new ArgumentOutOfRangeException( "index must be within the range [0,Count-1]." );
             }
 
-			//Console.WriteLine( "HeapifyBottomUp" );
-			//Console.WriteLine( "index: " + index + ", count: " + __data.Count );
-
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
             try
@@ -658,24 +607,24 @@ namespace Axon.Collections
                 // Index of the RIGHT CHILD of i: j = 2i + 2
                 // Index of the PARENT of i:      j = (i - 1) / 2
 
-                float priority = 0f;
-                float priorityParent = 0f;
-                do
+                double priority = 0.0;
+                double priorityParent = 0.0;
+                while ( index > 0 )
                 {
                     int parentIndex = ( index - 1 ) / 2;
                     priority        = __data[ index ].Priority;
                     priorityParent  = __data[ parentIndex ].Priority;
-
-					//Console.WriteLine( "Priority: " + priority );
-					//Console.WriteLine( "PARENT Priority: " + priorityParent );
 
                     if ( priority > priorityParent )
                     {
                         SwapElements( index, parentIndex );
                         index = parentIndex;
                     }
+					else
+					{
+						break;
+					}
                 }
-                while ( index > 0 && priority > priorityParent );
             }
             catch ( Exception e )
             {
@@ -721,9 +670,6 @@ namespace Axon.Collections
                 throw new ArgumentOutOfRangeException( "Index must be a valid index within the heap." );
             }
 
-			//Console.WriteLine( "HeapifyTopDown" );
-			//Console.WriteLine( "index: " + index + ", count: " + __data.Count );
-
             // Lock the thread -- CRITICAL SECTION BEGIN
             Monitor.Enter( __data );
             try
@@ -733,29 +679,28 @@ namespace Axon.Collections
                 // Index of the RIGHT CHILD of i: j = 2i + 2
                 // Index of the PARENT of i:      j = (i - 1) / 2
 
-                int highestPriority = -1;
-                while ( index < __data.Count && index != highestPriority )
+				// I wish there were a cleaner way to write this but I have fought like hell to make this 
+				// better and gained nothing. Tamper with this god-awful syntax at your own risk.
+                while ( true )
                 {
                     // highestPriority is initialized here since it can't be set before the while 
 					// condition (index != highestPriority would result in the while never running 
 					// if so).
-                    highestPriority = index;
-                    float priority = __data[ index ].Priority;
-
-					//Console.WriteLine( "Priority: " + priority );
+                    int highestPriority = index;
+                    double priority = __data[ index ].Priority;
 
                     // Check if the priority of the left child is greater than that of the element 
 					// at the current index.
                     int leftIndex = 2 * index + 1;
                     if ( leftIndex < __data.Count )
                     {
-                        float priorityLeftChild = __data[ leftIndex ].Priority;
+                        double priorityLeftChild = __data[ leftIndex ].Priority;
                         if ( priority < priorityLeftChild )
                         {
                             // Update the highestPriority index with the index of the left child.
                             highestPriority = leftIndex;
+							priority = __data[ leftIndex ].Priority;
                         }
-						//Console.WriteLine( "LEFT Priority: " + priorityLeftChild );
                     }
 
                     // Check if the priority of the left child is greater than that of the element 
@@ -763,14 +708,26 @@ namespace Axon.Collections
                     int rightIndex = 2 * index + 2;
                     if ( rightIndex < __data.Count )
                     {
-                        float priorityRightChild = __data[ rightIndex ].Priority;
+                        double priorityRightChild = __data[ rightIndex ].Priority;
                         if ( priority < priorityRightChild )
                         {
                             // Update the highestPriority index with the index of the right child.
                             highestPriority = rightIndex;
+							priority = __data[ rightIndex ].Priority;
                         }
-						//Console.WriteLine( "RIGHT Priority: " + priorityRightChild );
                     }
+
+					// Swap the highest priority element with the current index or break the loop since the 
+					// heapify operation is complete.
+					if ( highestPriority != index )
+					{
+						SwapElements( highestPriority, index );
+						index = highestPriority;
+					}
+					else
+					{
+						break;
+					}
                 }
             }
             finally
