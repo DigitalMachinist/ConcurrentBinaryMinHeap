@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['capacity',['Capacity',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a78a3adad031ae8fde9384f56cfc511e8',1,'Axon::Collections::ConcurrentBinaryMinHeap']]],
-  ['clear',['Clear',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a53faf7ae81d8bffb5fcefa312b872a94',1,'Axon::Collections::ConcurrentBinaryMinHeap']]],
-  ['concurrentbinaryminheap',['ConcurrentBinaryMinHeap',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a54b0b819a24d95681b5fe8079568efd1',1,'Axon.Collections.ConcurrentBinaryMinHeap.ConcurrentBinaryMinHeap()'],['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#ace378fd08e67ff35c0b81cb0d4c2dc9e',1,'Axon.Collections.ConcurrentBinaryMinHeap.ConcurrentBinaryMinHeap(int initialCapacity)']]],
-  ['concurrentbinaryminheap',['ConcurrentBinaryMinHeap',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html',1,'Axon::Collections']]],
+  ['axoninteractive',['axoninteractive',['../namespaceca_1_1axoninteractive.html',1,'ca']]],
+  ['ca',['ca',['../namespaceca.html',1,'']]],
+  ['capacity',['Capacity',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a7eed25e728d4a4706008f3a14ef12a76',1,'ca::axoninteractive::Collections::ConcurrentBinaryMinHeap']]],
+  ['clear',['Clear',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a162b9a2669c5e81eddaed156eb87a69a',1,'ca::axoninteractive::Collections::ConcurrentBinaryMinHeap']]],
+  ['collections',['Collections',['../namespaceca_1_1axoninteractive_1_1_collections.html',1,'ca::axoninteractive']]],
+  ['concurrentbinaryminheap',['ConcurrentBinaryMinHeap',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a5187970bfcd591b3538b48d47382ebe3',1,'ca.axoninteractive.Collections.ConcurrentBinaryMinHeap.ConcurrentBinaryMinHeap()'],['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a17032137e65165e29fd3e2f59269e31e',1,'ca.axoninteractive.Collections.ConcurrentBinaryMinHeap.ConcurrentBinaryMinHeap(int initialCapacity)']]],
+  ['concurrentbinaryminheap',['ConcurrentBinaryMinHeap',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html',1,'ca::axoninteractive::Collections']]],
   ['concurrentbinaryminheap_2ecs',['ConcurrentBinaryMinHeap.cs',['../_concurrent_binary_min_heap_8cs.html',1,'']]],
-  ['contains',['Contains',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a0c43e93176afdf05424179c007be8fac',1,'Axon::Collections::ConcurrentBinaryMinHeap']]],
-  ['copyto',['CopyTo',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a0fe42c659c59aed0907876a1620dca01',1,'Axon::Collections::ConcurrentBinaryMinHeap']]],
-  ['count',['Count',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a498ca74d0f3de062ee7860928dc1273e',1,'Axon::Collections::ConcurrentBinaryMinHeap']]]
+  ['contains',['Contains',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a8957e38646c92297a2ba823d7e803355',1,'ca::axoninteractive::Collections::ConcurrentBinaryMinHeap']]],
+  ['copyto',['CopyTo',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a4787ce444f32dda3a1cfb99624451546',1,'ca::axoninteractive::Collections::ConcurrentBinaryMinHeap']]],
+  ['count',['Count',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#a5e16fd3fa2df28a4756a800aa797e241',1,'ca::axoninteractive::Collections::ConcurrentBinaryMinHeap']]]
 ];

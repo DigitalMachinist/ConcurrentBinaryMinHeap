@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Axon.Collections
+namespace ca.axoninteractive.Collections
 {
 	public class PriorityValuePair<TValue>
 	{

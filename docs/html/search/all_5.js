@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remove',['Remove',['../class_axon_1_1_collections_1_1_concurrent_binary_min_heap.html#a966dd9dac9ee5d42adaaf7d4c3096d85',1,'Axon::Collections::ConcurrentBinaryMinHeap']]]
+  ['remove',['Remove',['../classca_1_1axoninteractive_1_1_collections_1_1_concurrent_binary_min_heap.html#aacf93c8c78e6107980aa7e874ac0f744',1,'ca::axoninteractive::Collections::ConcurrentBinaryMinHeap']]]
 ];
