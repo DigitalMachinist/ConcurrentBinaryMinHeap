@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ca.axoninteractive.Collections
+﻿namespace Axon.Collections
 {
 	public class PriorityValuePair<TValue>
 	{
